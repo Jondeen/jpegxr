@@ -25,8 +25,8 @@ let input = File::open(filename)?;
 let mut decoder = ImageDecode::with_reader(input)?;
 
 let (width, height) = decoder.get_size()?;
-let info = PixelInfo::from_format(get_pixel_format()?);
-let stride = width * info.bytes_per_pixel() / 8;
+let info = PixelInfo::from_format(image.get_pixel_format()?);
+let stride = width * info.bits_per_pixel() / 8;
 let size = stride * height;
 
 let buffer = Vec::<u8>::with_capacity(size);
